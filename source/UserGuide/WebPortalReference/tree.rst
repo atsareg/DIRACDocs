@@ -7,4 +7,19 @@ Web Portal Reference
 .. toctree::
    :maxdepth: 1
 
+
+   BrowseRemoteConfiguration/index
+   DataLoggingMonitor/index
    JobMonitoring/index
+   ManageProxies/index
+   ManageRemoteConfiguration/index
+   Overview/index
+   PilotSummary/index
+   PortalErrorConsole/index
+   ProductionMonitor/index
+   ProxyActionLogs/index
+   RawIntegrity/index
+   ShowHistoryOfServerChanges/index
+   SiteSummary/index
+   StorageDirectorySummary/index
+
