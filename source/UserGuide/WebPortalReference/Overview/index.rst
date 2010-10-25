@@ -14,10 +14,9 @@ The mostly used layout within our Web Portal is a table on the right side of the
 
 
 
-  .. image:: DIRACPortalOverview.jpg
-     :align: center
+.. figure:: DIRAC-portal-overview.jpg 
 
-     DIRAC Web Portal
+    DIRAC Web Portal
 
 1. **Main Menu**: This menu offers options for systems, jobs, tools and help.
 2. **Selections**: Shows a set of selectors than permits generate customs selections.
