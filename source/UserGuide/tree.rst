@@ -9,3 +9,4 @@ User Guide
 
    InstallingDIRACClient/index
    WebPortalReference/tree
+   CommandReference/tree
