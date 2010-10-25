@@ -1,5 +1,5 @@
 =========================
-DIRAC Web Portal Overview
+Overview
 =========================
 
 DIRAC Web Portal is a Web application which provides access to all the aspects of the DIRAC distributed computing system. It allows to monitor and control all the activities in a natural desktop application like way. In order to reach this goal DIRAC Web Portal is built using GUI elements to mimic desktop applications, such as toolbars, menus, windows buttons and so on.

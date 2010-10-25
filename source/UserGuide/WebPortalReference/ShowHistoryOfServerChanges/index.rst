@@ -1,5 +1,5 @@
 ====================================
-Web Portal History of Server Changes
+History of Server Changes
 ====================================
 
   This is part of DIRAC Web Portal project. For the description of the DIRAC Web Portal basic functionality look here.

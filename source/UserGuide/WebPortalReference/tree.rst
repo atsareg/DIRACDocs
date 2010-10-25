@@ -10,10 +10,12 @@ Web Portal Reference
 
    BrowseRemoteConfiguration/index
    DataLoggingMonitor/index
+   ErrorConsole/index
    JobMonitoring/index
    ManageProxies/index
    ManageRemoteConfiguration/index
    Overview/index
+   PilotMonitor/index
    PilotSummary/index
    PortalErrorConsole/index
    ProductionMonitor/index

@@ -1,5 +1,5 @@
 =================================
-Web Portal Data Logging Monitor
+Data Logging Monitor
 =================================
 
   This is part of DIRAC Web Portal project. For the description of the DIRAC Web Portal basic functionality look here.

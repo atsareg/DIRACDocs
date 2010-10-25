@@ -1,5 +1,5 @@
 =============================
-Web Portal Production Monitor
+Sites Summary
 =============================
 
   This is part of DIRAC Web Portal project. For the description of the DIRAC Web Portal basic functionality look here.
