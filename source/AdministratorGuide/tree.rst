@@ -7,5 +7,7 @@ Administrator Guide
    
    SetupStructure/index
    InstallingDIRACService/index
+   SystemAdministratorInterface/index
    Configuration/tree
    Systems/tree
+   CommandReference/tree

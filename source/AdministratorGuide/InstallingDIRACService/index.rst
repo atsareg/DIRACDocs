@@ -3,10 +3,17 @@ DIRAC Server Installation
 ===================================
 
 The procedure described here outlines the installation of the DIRAC services on a host machine.
+There are two distinct cases of service installations:
+
+  - Primary installation. This the first installation of a fresh new system. No functioning
+    Configuration Service is running yet.
+  - Additional host installation. This is the installation of services on additional hosts 
+    with the Master Configuration Service already up and running on another host. 
+  
 The primary service installation should install and start the Configuration Service which is a
-backbone for the entire system. SystemAdministrator service once installed will allow remote
-management of the DIRAC components on the host. Multi-host installations are also possible sharing
-services in a single DIRAC setup. 
+backbone for the entire system. The SystemAdministrator service once installed will allow remote
+management of the DIRAC components on the host. Multi-host installations are possible sharing
+services in a single DIRAC setup using additional host installation procedure 
 
 Requirements
 -----------------------------------------------
@@ -15,22 +22,25 @@ Requirements
   
 
       - 9130-9200 ports should be open in the firewall for the incoming TCP/IP connections
-      - Ports 80 and 443 should be open and redirected to ports 8080 and 8443 respectively by setting appropriately the iptables
+      - Ports 80 and 443 should be open and redirected to ports 8080 and 8443 respectively by 
+        setting appropriately the iptables
       - Host certificates in pem format 
       
     If gLite third party services are supposed to be used, for example, for the pilot job submission,
-    gLite UI should installed 
+    gLite UI must be installed 
 
     Client:
 
       - User certificate in format .pem into $HOME/.globus directory with correct permissions.
       - User certificate loaded into Web Browser
 
+Host preparation
+---------------------------------
 
-Installing basic services
--------------------------------------------
+The host for the DIRAC services should be prepared for the service installation following the steps
+below. This is the procedure necessary for both primary and additional host installations.
 
-  - As root create a dirac user account. This is the account which will be used to run all the DIRAC services:::
+ - As root create a dirac user account. This is the account which will be used to run all the DIRAC services:::
  
       adduser -s /bin/bash -d /home/dirac dirac
       
@@ -53,8 +63,18 @@ Installing basic services
       mkdir /home/dirac/DIRAC
       cd /home/dirac/DIRAC
       wget -np http://lhcbproject.web.cern.ch/lhcbproject/dist/Dirac_project/install_site.sh
+      
+  - Check that the system clock is exact. Some system components are generating user certificate proxies dynamically and their
+    validity can be broken because of the wrong system date and time.    
+
+Primary host installation
+----------------------------
+
+The installation consists of setting up a minimal set of services which will allow to use
+the SystemAdministrator interface to complete the installation. The following steps should
+be taken:
  
-  - Now this is the time to edit the installation configuration file. This file contains all
+  - Editing the installation configuration file. This file contains all
     the necessary information describing the installation. It can contain also any other configuration
     data. By editing the configuration file one can describe the complete DIRAC service or
     just a subset for initial setup. Below is an example of a commented configuration file.
@@ -68,7 +88,8 @@ Installing basic services
             {
                # DIRAC release version
                Release = v5r8
-               # LCG software package version
+               # LCG software package version. Specify this option only if you need the gLite
+               # UI installation
                LcgVer = 2009-08-13
                # Set this flag to yes if each DIRAC software update will be installed
                # in a separate directory, not overriding the previous ones
@@ -79,8 +100,6 @@ Installing basic services
                Extensions = LHCb, Web
                # Flag determining whether the Web Portal will be installed
                WebPortal = yes
-               # Server or client type installation
-               InstallType = server
             
                # Site name   
                SiteName = DIRAC.CERN.ch
@@ -93,7 +112,7 @@ Installing basic services
                # Flag to use the server certificates
                UseServerCertificate = yes
                # Configuration Server URL
-               ConfigurationServer = dips://volhcb29.cern.ch:9135/Configuration/Server
+               ConfigurationServer = dips://dirac.cern.ch:9135/Configuration/Server
                # Flag to set up the Configuration Server as Master 
                ConfigurationMaster = yes
                # Configuration Name
@@ -109,23 +128,21 @@ Installing basic services
                AdminGroupName = dirac_admin 
             
                # Name of the installation host (default: the current host )
-               Host = volhcb29.cern.ch
+               Host = dirac.cern.ch
                # DN of the host certificate (default: None )
                HostDN = /DC=ch/DC=cern/OU=computers/CN=volhcb29.cern.ch
-               # Type of the installation host Normal or Power (default: Normal )
-               HostType = Power   
             
-               # The list of DIRAC Systems to be installed
+               # List of DIRAC Systems to be installed
                Systems = Configuration,Framework
-               # The list of Services to be installed
-               Services = Configuration/Server,Framework/SystemAdministrator
-               # The list of Agents to be installed
-               Agents = 
+               # List of Services to be installed
+               Services  = Configuration/Server
+               Services += Framework/SystemAdministrator
+
             }
 
   - Run install_site.sh giving the edited CFG file as the argument:::
   
-      ./install_seed.sh install.cfg
+      ./install_site.sh install.cfg
       
   - If the installation is successful, in the end of the script execution you will see the report
     of the status of running LHCb services, e.g.:::
@@ -137,20 +154,26 @@ Installing basic services
                             Web_paster : Run           5    30829
         
 Now the basic services - Configuration and SystemAdministrator - are installed. The rest of the installation can proceed using 
-the DIRAC Administrator interface, either command line ( CLI ) or using Web Portal ( eventually, not ready yet ).      
+the DIRAC Administrator interface, either command line ( CLI ) or using Web Portal ( eventually, not available yet ).      
+
+.. _setting_with_CLI:
 
 Setting up DIRAC services using SystemAdministrator CLI 
 -------------------------------------------------------
 
 To use the SystemAdministrator CLI, you will need first to install the DIRAC Client software on some machine.
-To install the DIRAC Client, follow the procedure described here [link to the client installation]
+To install the DIRAC Client, follow the procedure described in the User Guide.
 
-  - Start admin command line interface using diracAdmin DIRAC group:::
+  - Start admin command line interface using administrator DIRAC group:::
 
-       proxy-init -g diracAdmin
+       proxy-init -g dirac_admin
        dirac-admin-sysadmin-cli --host <HOST_NAME>
        
        where the HOST_NAME is the name of the DIRAC service host
+
+  - Add instances of DIRAC systems which service will be running on the host, for example:::
+  
+      add instance WorkloadManagement NewProduction
 
   - Install MySQL database. You have to enter two passwords one is the root password for MySQL itself and another one is the 
     password for user who will own the DIRAC databases, in our case the user name is Dirac:::
@@ -159,83 +182,91 @@ To install the DIRAC Client, follow the procedure described here [link to the cl
       MySQL root password:
       MySQL Dirac password:
 
-  - Install databases:::
+  - Install databases, for example:::
 
       install db ComponentMonitoringDB
-      install db FileCatalogDB
-      install db JobDB
-      install db PilotAgentsDB
-      install db ProxyDB
-      install db RequestDB
-      install db SandboxMetadataDB
-      install db SystemLoggingDB
-      install db TaskQueueDB
-      install db UserProfileDB
-      install db NotificationDB
-      install db MPIJobDB
-      install db AccountingDB
-      install db JobLoggingDB 
 
-  - Install services and agents:::
+  - Install services and agents, for example:::
 
       install service WorkloadManagement JobMonitoring
-      install service WorkloadManagement JobManager
-      install service WorkloadManagement JobStateUpdate
-      install service DataManagement StorageElement
-      install service Framework SystemLogging
-      install service Framework Monitoring
-      install service RequestManagement RequestManager
-      install service Framework SystemLoggingReport
-      install service WorkloadManagement WMSAdministrator
-      install service DataManagement FileCatalog
-      install service Framework ProxyManager
-      install service Framework SecurityLogging
-      install service Framework Notification
-      install service Framework UserProfileManager
-      install service Framework BundleDelivery
-      install service Framework SystemAdministrator
-      install service WorkloadManagement Matcher
-      install service WorkloadManagement MPIService
-      install service WorkloadManagement SandboxStore 
-      install service Accounting DataStore
-      install agent Framework CAUpdateAgent
-      install agent Framework SystemLoggingDBCleaner
-      install agent Framework TopErrorMessagesReporter
-      install agent WorkloadManagement JobCleaningAgent
-      install agent WorkloadManagement MightyOptimizer
-      install agent WorkloadManagement StalledJobAgent
-      install agent WorkloadManagement TaskQueueDirector
-      install agent WorkloadManagement PilotStatusAgent
-      install agent WorkloadManagement PilotMonitoringAgent
+      ...
       install agent Configuration CE2CSAgent
  
- At this point all the services should be running with their default configuration parameters. 
+Note that all the necessary commands above can be collected in a text file and the whole installation can be 
+accomplished with a single CLI command:::
+ 
+      execfile <command_file> 
 
-  - Login into web portal and choose diracAdmin group, you can change configuration file following those links::
+At this point all the services should be running with their default configuration parameters. 
+To change the components configuration parameters
 
-      Systems -> Configuration -> Manage Remote Configuration
+  - Login into web portal and choose dirac_admin group, you can change configuration file following those links::
 
-  - In the server all the logs of the services are stored in separately files, can be checked using the following command
+      Systems -> Configuration -> Manage Configuration
+
+  - In the server all the logs of the services are stored in separate files and can be checked using the following command
   
       tail -f  /opt/dirac/startup/<INSTANCE>_<Service or Agent>/log/current
 
-Configuration
---------------------
+Additional host installation
+-----------------------------
 
-  Missing Variables::
+To add a new host to the already existing DIRAC Setup the procedure is similar to the one for the
+primary installation. You should perform all the preliminary steps to prepare the host for the
+installation. One additional operation is the new host registration in the already functional
+Configuration Service.
 
-    - VOMSRole
-    - VOMSVO
-    -  Operatios -> EMail -> Production
-    - EnableAutoMerge = yes ??
-    - 
+Then you edit the installation configuration file:::
+
+  # This section determines which DIRAC components will installed and where
     
-  Variables to change::
-   
-    - RB
-    
-  Voms certificate::
+            LocalInstallation
+            {
+               # DIRAC release version, if omitted, the default version will be used
+               Release = v5r8
+               # LCG software package version. Specify this option only if you need the gLite
+               # UI installation
+               LcgVer = 2009-08-13
+               # Set this flag to yes if each DIRAC software update will be installed
+               # in a separate directory, not overriding the previous ones
+               UseVersionsDir = yes
+               # The directory of the DIRAC software installation
+               TargetPath = /opt/dirac
+               # DIRAC extensions to be installed
+               Extensions = LHCb
+               # Flag determining whether the Web Portal will be installed
+               WebPortal = no
+            
+               # Site name   
+               SiteName = DIRAC.CERN.ch
+               # Setup name
+               Setup = LHCb-NewProduction
+               # Default name of system instances 
+               InstanceName = NewProduction
+               # Flag to skip CA checks when talking to services
+               SkipCAChecks = yes
+               # Flag to use the server certificates
+               UseServerCertificate = yes
+               # Configuration Server URL of already functional service 
+               ConfigurationServer = dips://dirac.cern.ch:9135/Configuration/Server
+               # Flag to set up the Configuration Server as Master 
+               ConfigurationMaster = no
+            
+               # Name of the installation host (default: the current host )
+               Host = dirac-aux.cern.ch
+               # DN of the host certificate (default: None )
+               HostDN = /DC=ch/DC=cern/OU=computers/CN=dirac-aux.cern.ch
+            
+               # List of DIRAC Systems to be installed
+               Systems = Framework
+               # List of Services to be installed
+               Services = Framework/SystemAdministrator
+
+            }  
+
+Now run install_site.sh giving the edited CFG file as the argument:::
   
-    /opt/dirac/etc/grid-security/vomsdir
-  
-  
+      ./install_site.sh install.cfg
+      
+If the installation is successful, the SystemAdministrator service will be up and running on the
+host. You can now set up the required components as described in :ref:`setting_with_CLI`       
