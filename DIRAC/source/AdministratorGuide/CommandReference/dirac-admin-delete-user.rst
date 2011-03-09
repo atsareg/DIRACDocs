@@ -1,0 +1,16 @@
+{{{
+#!rst
+
+dirac-admin-delete-user
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+
+  Remove User from Configuration
+
+Usage::
+
+  dirac-admin-delete-user [option|cfgfile] ... User ...
+
+Arguments::
+
+  User:     User name 
+}}}
