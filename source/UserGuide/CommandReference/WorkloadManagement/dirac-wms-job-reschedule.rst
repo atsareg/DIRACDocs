@@ -1,0 +1,14 @@
+===============================
+dirac-wms-job-reschedule
+===============================
+
+  Reschedule the given DIRAC job
+
+Usage::
+
+  dirac-wms-job-reschedule [option|cfgfile] ... JobID ...
+
+Arguments::
+
+  JobID:    DIRAC Job ID 
+
