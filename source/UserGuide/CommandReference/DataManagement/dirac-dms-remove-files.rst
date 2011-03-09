@@ -1,0 +1,12 @@
+=============================
+dirac-dms-remove-files
+=============================
+
+Remove the given file or a list of files from the File Catalog and from the storage
+
+Usage::
+
+   dirac-dms-remove-files <LFN | fileContainingLFNs>
+
+ 
+
