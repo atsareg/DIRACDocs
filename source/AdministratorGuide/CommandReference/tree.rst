@@ -2,7 +2,7 @@
 Administrator Command Reference
 ====================================
 
-In this subsection all the admin commands available are explained.
+In this subsection all the dirac-admin commands available are explained.
 
 .. toctree::
    :maxdepth: 2
