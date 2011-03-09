@@ -1,0 +1,22 @@
+=============================
+dirac-admin-allow-site
+=============================
+
+  Add Site to Active mask for current Setup
+
+Usage::
+
+  dirac-admin-allow-site [option|cfgfile] ... Site Comment
+
+Arguments::
+
+  Site:     Name of the Site
+
+  Comment:  Reason of the action 
+
+ 
+
+Options::
+
+  -E:  --email=          : Boolean True/False (True by default) 
+
