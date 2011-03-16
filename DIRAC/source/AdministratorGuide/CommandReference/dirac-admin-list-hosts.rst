@@ -1,8 +1,6 @@
-{{{
-#!rst
-
+=============================
 dirac-admin-list-hosts
-@@@@@@@@@@@@@@@@@@@@@@@@@@@
+=============================
 
 Usage::
 
@@ -13,4 +11,9 @@ Usage::
 Options::
 
   -e   --extended        : Show extended info 
-}}}
+
+Example::
+
+  $  dirac-admin-list-hosts
+  dirac.in2p3.fr
+  host-dirac.in2p3.fr

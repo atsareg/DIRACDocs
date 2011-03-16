@@ -1,8 +1,6 @@
-{{{
-#!rst
-
+===========================
 dirac-admin-allow-se
-@@@@@@@@@@@@@@@@@@@@@@@@@
+===========================
 
 Enable using one or more Storage Elements
 
@@ -21,4 +19,8 @@ Options::
   -w   --AllowWrite      :      Allow only writing to the storage element 
 
   -S:  --Site=           :         Allow all SEs associated to site 
-}}}
+
+Example::
+
+  $ dirac-admin-allow-se M3PEC-disk
+  $

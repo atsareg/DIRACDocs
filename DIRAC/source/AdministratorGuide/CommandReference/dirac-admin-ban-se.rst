@@ -1,8 +1,6 @@
-{{{
-#!rst
-
+=========================
 dirac-admin-ban-se
-@@@@@@@@@@@@@@@@@@@@@@@
+=========================
 
 Ban one or more Storage Elements for usage
 
@@ -21,4 +19,7 @@ Options::
   -w   --BanWrite        :      Ban writing to the storage element 
 
   -S:  --Site=           :       Ban all SEs associate to site 
-}}}
+
+Example::
+
+  $ dirac-admin-ban-se M3PEC-disk

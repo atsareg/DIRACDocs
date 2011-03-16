@@ -1,8 +1,6 @@
-{{{
-#!rst
-
+==========================
 dirac-admin-bdii-sa
-@@@@@@@@@@@@@@@@@@@@@@@@
+==========================
 
   Check info on BDII for SA
 
@@ -12,7 +10,7 @@ Usage::
 
 Arguments::
 
-  Site:     Name of the Site (ie: CERN-PROD) 
+  Site: Name of the Site (ie: CERN-PROD) 
 
  
 
@@ -21,4 +19,7 @@ Options::
   -H:  --host=           : BDII host 
 
   -V:  --vo=             : vo 
-}}}
+
+Example::
+
+  $ dirac-admin-bdii-sa CERN-PROD 

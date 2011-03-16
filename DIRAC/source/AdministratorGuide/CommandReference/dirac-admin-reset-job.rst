@@ -1,16 +1,13 @@
-{{{
-#!rst
-
+============================
 dirac-admin-reset-job
-@@@@@@@@@@@@@@@@@@@@@@@@@@
-
-  Reset a job or list of jobs in the WMS
+============================
 
 Usage::
 
-  dirac-admin-reset-job [option|cfgfile] ... JobID ...
+  dirac-admin-reset-job.py (<options>|<cfgFile>)* 
 
-Arguments::
+Example::
 
-  JobID:    DIRAC ID of the Job 
-}}}
+  $ dirac-admin-reset-job 1848
+  Reset Job 1848
+

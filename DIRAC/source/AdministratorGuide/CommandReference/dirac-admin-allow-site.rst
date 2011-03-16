@@ -1,24 +1,17 @@
-{{{
-#!rst
-
+=============================
 dirac-admin-allow-site
-@@@@@@@@@@@@@@@@@@@@@@@@@@@
-
-  Add Site to Active mask for current Setup
+=============================
 
 Usage::
 
-  dirac-admin-allow-site [option|cfgfile] ... Site Comment
-
-Arguments::
-
-  Site:     Name of the Site
-
-  Comment:  Reason of the action 
+  dirac-admin-allow-site.py (<options>|<cfgFile>)* 
 
  
 
 Options::
 
-  -E:  --email=          : Boolean True/False (True by default) 
-}}}
+  -    --email=          : Boolean True/False (True by default) 
+
+Example::
+  
+  $ dirac-admin-allow-site LCG.IN2P3.fr 'FRANCE'

@@ -1,8 +1,6 @@
-{{{
-#!rst
-
+============================
 dirac-admin-add-group
-@@@@@@@@@@@@@@@@@@@@@@@@@@
+============================
 
 Add or Modify a Group info in DIRAC
 
@@ -23,4 +21,10 @@ Options::
   -U:  --UserName:       : Short Name of user to be added to the Group (Allow Multiple instances or None) 
 
   -P:  --Property:       : Property to be added to the Group (Allow Multiple instances or None) 
-}}}
+
+Example::
+
+  $ dirac-admin-add-group -G dirac_test
+  $
+
+  
