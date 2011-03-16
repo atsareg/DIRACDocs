@@ -2,13 +2,12 @@
 dirac-wms-job-status
 ===========================
 
-  Retrieve status of the given DIRAC job
-
 Usage::
 
-  dirac-wms-job-status [option|cfgfile] ... JobID ...
+  dirac-wms-job-status.py (<options>|<cfgFile>)* 
 
-Arguments::
+Example::
 
-  JobID:    DIRAC Job ID 
+  $ dirac-wms-job-status 2
+  JobID=2 Status=Done; MinorStatus=Execution Complete; Site=EELA.UTFSM.cl;
 

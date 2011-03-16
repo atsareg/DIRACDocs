@@ -2,13 +2,11 @@
 dirac-wms-job-kill
 =========================
 
-  Issue a kill signal to a running DIRAC job
-
 Usage::
 
-  dirac-wms-job-kill [option|cfgfile] ... JobID ...
+  dirac-wms-job-kill.py (<options>|<cfgFile>)* 
 
-Arguments::
+Example::
 
-  JobID:    DIRAC Job ID 
-
+  $ dirac-wms-job-kill 1918 
+  Killed job 1918

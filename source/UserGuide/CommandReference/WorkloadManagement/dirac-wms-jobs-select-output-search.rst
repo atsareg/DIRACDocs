@@ -2,15 +2,9 @@
 dirac-wms-jobs-select-output-search
 ==========================================
 
-  Retrieve output sandbox for DIRAC Jobs for the given selection and search for a string in their std.out
-
 Usage::
 
-  dirac-wms-jobs-select-output-search [option|cfgfile] ... String ...
-
-Arguments::
-
-  String:   string to search for 
+  dirac-wms-jobs-select-output-search.py (<options>|<cfgFile>)* 
 
  
 

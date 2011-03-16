@@ -2,13 +2,12 @@
 dirac-wms-job-reschedule
 ===============================
 
-  Reschedule the given DIRAC job
-
 Usage::
 
-  dirac-wms-job-reschedule [option|cfgfile] ... JobID ...
+  dirac-wms-job-reschedule.py (<options>|<cfgFile>)* 
 
-Arguments::
+Example::
 
-  JobID:    DIRAC Job ID 
+  $ dirac-wms-job-reschedule 1
+  Rescheduled job 1
 

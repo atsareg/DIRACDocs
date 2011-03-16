@@ -14,3 +14,8 @@ Usage::
 
  
 
+Example::
+
+  $ dirac-dms-clean-directory /formation/user/v/vhamar/newDir
+  Cleaning directory /formation/user/v/vhamar/newDir ...  OK
+

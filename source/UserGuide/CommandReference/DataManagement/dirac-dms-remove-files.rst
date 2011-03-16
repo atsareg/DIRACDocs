@@ -10,3 +10,6 @@ Usage::
 
  
 
+Example::
+
+  $ dirac-dms-remove-files /formation/user/v/vhamar/Test.txt

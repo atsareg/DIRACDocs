@@ -16,3 +16,12 @@ Options::
 
   -u:  --Unit=           :    Unit to use [default GB] (MB,GB,TB,PB) 
 
+Example::
+
+  $ dirac-dms-data-size  /formation/user/v/vhamar/Example.txt
+  ------------------------------
+  Files          |      Size (GB)
+  ------------------------------
+  1              |            0.0
+  ------------------------------
+

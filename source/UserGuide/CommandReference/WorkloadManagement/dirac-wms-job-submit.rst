@@ -2,13 +2,12 @@
 dirac-wms-job-submit
 ===========================
 
-  Submit jobs to DIRAC WMS
-
 Usage::
 
-  dirac-wms-job-submit [option|cfgfile] ... JDL ...
+  dirac-wms-job-submit.py (<options>|<cfgFile>)* 
 
-Arguments::
+Example::
 
-  JDL:      Path to JDL file 
+  $ dirac-wms-job-submit Simple.jdl 
+  JobID = 11
 

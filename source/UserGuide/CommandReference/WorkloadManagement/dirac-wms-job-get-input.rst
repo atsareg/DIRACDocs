@@ -2,19 +2,12 @@
 dirac-wms-job-get-input
 ==============================
 
-  Retrieve input sandbox for DIRAC Job
-
 Usage::
 
-  dirac-wms-job-get-input [option|cfgfile] ... JobID ...
+  dirac-wms-job-get-input.py (<options>|<cfgFile>)* 
 
-Arguments::
+Example::
 
-  JobID:    DIRAC Job ID 
-
- 
-
-Options::
-
-  -D:  --Dir=            : Store the output in this directory 
+  $ dirac-wms-job-get-input 13
+  Job input sandbox retrieved in InputSandbox13/
 

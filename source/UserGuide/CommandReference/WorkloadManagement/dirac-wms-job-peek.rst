@@ -2,13 +2,10 @@
 dirac-wms-job-peek
 =========================
 
-  Peek StdOut of the given DIRAC job
-
 Usage::
 
-  dirac-wms-job-peek [option|cfgfile] ... JobID ...
+  dirac-wms-job-peek.py (<options>|<cfgFile>)* 
 
-Arguments::
+Example::
 
-  JobID:    DIRAC Job ID 
-
+  $ dirac-wms-job-peek 1

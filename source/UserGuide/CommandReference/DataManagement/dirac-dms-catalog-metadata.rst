@@ -12,3 +12,8 @@ Usage::
 
  
 
+Example::
+
+  $ dirac-dms-catalog-metadata /formation/user/v/vhamar/Example.txt
+  FileName                                     Size        GUID                                     Status   Checksum
+  /formation/user/v/vhamar/Example.txt         34          EDE6DDA4-3344-3F39-A993-8349BA41EB23     1        eed20d47
