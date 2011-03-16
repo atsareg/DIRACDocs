@@ -1,15 +1,15 @@
 ===================================
-System Administrator Shell
+System Administrator Console
 ===================================
 
-The System Administrator Shell (SAS) is the interface which allows a system administrator to connect
+The System Administrator Console (SAC) is the interface which allows a system administrator to connect
 to any DIRAC server which is running a SystemAdministrator service. This interface allows to perform
 all the system maintenance tasks remotely.  
 
-Starting SAS
+Starting SAC
 ---------------
 
-The SAS is invoked using dirac-admin-sysadmin-cli command for a given DIRAC server, for example::
+The SAC is invoked using dirac-admin-sysadmin-cli command for a given DIRAC server, for example::
 
     dirac-admin-sysadmin-cli --host volhcb01.cern.ch
 
@@ -75,7 +75,10 @@ The output of the command shows for each component its system, name and type as 
 - Installed status shows if the component is installed on the host. This means that it is configured to run with 
   Runit system     
     
-                                    
+Managing DIRAC services and agents
+-----------------------------------    
     
+Updating the DIRAC installation                                     
+---------------------------------    
               
           
