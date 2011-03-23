@@ -73,7 +73,7 @@ Users need to specify parameters to scripts to define what they want to do. To d
 
     #Import the required DIRAC modules
     from DIRAC.Interfaces.API.DIRAC import DIRAC
-    #Do stuff...
+    #Do stuff... depending on cliParams.raw, cliParams.pingsToDo and servicesList
 
 
 Let's follow the example step by step. First we import the required modules from DIRAC. S_OK and S_ERROR are the default way DIRAC modules return values or errors. Script module is the initialization and command line parser that scripts use to initialize themselves. *No other DIRAC module should be imported here*.
