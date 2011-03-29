@@ -2,9 +2,10 @@
 DIRAC Configuration
 ===============================
 
-Configuration Service is providing all the necessary parameters for all the operations
-of the whole DIRAC Setup. In this section, the Configuration parameters are described.
-the procedure to introduce new parameters and to update existing values is also explained
+The Configuration Service is providing the necessary information for the operations
+of a whole DIRAC Installation (which might include several setups). In this section, 
+the structure of the DIRAC Configuration and its contend are described.
+The procedure to add new configuration data and to update existing one is explained.
 
 .. toctree::
    :maxdepth: 2
