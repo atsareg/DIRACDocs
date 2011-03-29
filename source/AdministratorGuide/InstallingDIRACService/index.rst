@@ -5,9 +5,9 @@ DIRAC Server Installation
 The procedure described here outlines the installation of the DIRAC components on a host machine, a 
 DIRAC server. There are two distinct cases of installations:
 
-  - **Primary server installation**. This the first installation of a fresh new DIRAC system. No functioning
+  - *Primary server installation*. This the first installation of a fresh new DIRAC system. No functioning
     Configuration Service is running yet (:ref:`install_primary_server`).
-  - **Additional server installation**. This is the installation of additional hosts connected to an already 
+  - *Additional server installation*. This is the installation of additional hosts connected to an already 
     existing DIRAC system, with the Master Configuration Service already up and running on another 
     DIRAC server (:ref:`install_additional_server`).
 
@@ -16,29 +16,29 @@ backbone for the entire DIRAC system. The SystemAdministrator Service, once inst
 management of the DIRAC components on the server. In multi-server installations DIRAC components are 
 distributed among a number of servers installed using the procedure for additional host installation.
 
-For all DIRAC installations any number of additional **client installations** are possible.
+For all DIRAC installations any number of client installations is possible.
 
 Requirements
 -----------------------------------------------
 
-**Server:**
+*Server:*
 
       - 9130-9200 ports should be open in the firewall for the incoming TCP/IP connections (this is the 
         default range if predefined ports are used, the port on which services are listening can be 
-        configured by the DIRAC administrator).
+        configured by the DIRAC administrator);
       - For the server hosting the portal, ports 80 and 443 should be open and redirected to ports 
-        8080 and 8443 respectively, i.e. setting iptables appropriately. 
-      - Grid host certificates in pem format
-      - At least one of the servers of the installation must have updated CAs and CRLs.
-      - If gLite third party services are to be accessed (for example for the pilot job submission via WMS 
-        or for data transfer using FTS) gLite UI must be installed and the environment made available via 
-        "source" of some script like /etc/profile.d/grid-env.sh.
+        8080 and 8443 respectively, i.e. setting iptables appropriately; 
+      - Grid host certificates in pem format;
+      - At least one of the servers of the installation must have updated CAs and CRLs files;
+      - If gLite third party services are needed (for example, for the pilot job submission via WMS 
+        or for data transfer using FTS) gLite User Interface must be installed and the environment set up 
+        by "sourcing" the corresponding script, e.g. /etc/profile.d/grid-env.sh.
 
-**Client:**
+*Client:*
 
-      - User certificate and private key in .pem format into $HOME/.globus directory with correct 
+      - User certificate and private key in .pem format in the $HOME/.globus directory with correct 
         permissions.
-      - User certificate loaded into Web Browser (supported browsers are: Mozilla Firefox, Chrome 
+      - User certificate loaded into the Web Browser (currently supported browsers are: Mozilla Firefox, Chrome 
         and Safari)
 
 Server preparation
@@ -47,31 +47,31 @@ Server preparation
 Any host running DIRAC server components should be prepared before the installation of DIRAC following 
 the steps below. This procedure must be followed for the primary server and for any additional server installations.
 
- - As root create a dirac user account. This account will be used to run all the DIRAC components::
+ - As *root* create a *dirac* user account. This account will be used to run all the DIRAC components::
 
       adduser -s /bin/bash -d /home/dirac dirac
 
- - As root, create the directory where the DIRAC services will be installed::
+ - As *root*, create the directory where the DIRAC services will be installed::
 
       mkdir /opt/dirac
       chown -R dirac:dirac /opt/dirac 
 
- - As root, check that the system clock is exact. Some system components are generating user certificate proxies 
-    dynamically and their validity can be broken because of the wrong system date and time. Properly configure
-    NTP if necessary.
+ - As *root*, check that the system clock is exact. Some system components are generating user certificate proxies 
+   dynamically and their validity can be broken because of the wrong system date and time. Properly configure
+   the NTP daemon if necessary.
 
- - As dirac user, create directories for security data and copy host certificate::
+ - As *dirac* user, create directories for security data and copy host certificate::
 
       mkdir -p /opt/dirac/etc/grid-security/
       cp hostcert.pem hostkey.pem /opt/dirac/etc/grid-security
 
- - As dirac user, create a directory or a link pointing to the CA certificates directory, for example::
+ - As *dirac* user, create a directory or a link pointing to the CA certificates directory, for example::
 
       ln -s /etc/grid-security/certificates  /opt/dirac/etc/grid-security/certificates    
 
    (this is only mandatory in one of the servers. Others can be synchronized from this one using DIRAC tools.)
 
- - As dirac user download the install_site.sh::
+ - As *dirac* user download the install_site.sh script::
 
       mkdir /home/dirac/DIRAC
       cd /home/dirac/DIRAC
@@ -82,14 +82,15 @@ the steps below. This procedure must be followed for the primary server and for 
 Primary server installation
 ----------------------------
 
-The installation consists of setting up a minimal set of services which will allow to use
-the SystemAdministrator interface to complete the installation. The following steps should
+The installation consists of setting up a set of services, agents and databases for the
+required DIRAC functionality. The SystemAdministrator interface can be used later to complete 
+the installation by setting up additional components. The following steps should
 be taken:
  
   - Editing the installation configuration file. This file contains all
-    the necessary information describing the installation. It can contain also additional configuration
-    data. By editing the configuration file one can describe the complete DIRAC server or
-    just a subset for initial setup. Below is an example of a commented configuration file.
+    the necessary information describing the installation. By editing the configuration 
+    file one can describe the complete DIRAC server or
+    just a subset for the initial setup. Below is an example of a commented configuration file.
     This file corresponds to a minimal DIRAC server configuration which allows to start
     using the system::
 
@@ -103,7 +104,9 @@ be taken:
         #
         #  DIRAC release version (this is an example, you should find out the current 
         #  production release)
-        Release = v5r8
+        Release = v5r13
+        #  Python version os the installation
+        PythonVersion = 26
         #  To install the Server version of DIRAC (the default is client)
         InstallType = server
         #  LCG python bindings for SEs and LFC. Specify this option only if your installation
@@ -121,7 +124,7 @@ be taken:
         Extensions = Web
 
         #
-        #   These are options for the configuration of the previously installed DIRAC software
+        #   These are options for the configuration of the installed DIRAC software
         #   i.e., to produce the initial dirac.cfg for the server
         #
         #  Give a Name to your User Community, it does not need to be the same name as in EGI, 
@@ -144,7 +147,7 @@ be taken:
         ConfigurationName = MyConfiguration
 
         #
-        #   These options define the DIRAC components being installed on "this" DIRAC server.
+        #   These options define the DIRAC components to be installed on "this" DIRAC server.
         #
         #
         #  The next options should only be set for the primary server,
@@ -152,7 +155,12 @@ be taken:
         #
         #  Name of the Admin user (default: None )
         AdminUserName = atsareg
-        #  DN of the Admin user certificate (*) (default: None )
+        #  DN of the Admin user certificate (default: None )
+        #  In order the find out the DN that needs to be included in the Configuration for a given 
+        #  host or user certificate the following command can be used::
+        #
+        #          openssl x509 -noout -subject -enddate -in <certfile.pem>
+        #
         AdminUserDN = /O=GRID-FR/C=FR/O=CNRS/OU=CPPM/CN=Andrei Tsaregorodtsev
         #  Email of the Admin user (default: None )
         AdminUserEmail = atsareg@in2p3.fr
@@ -162,15 +170,14 @@ be taken:
         HostDN = /DC=ch/DC=cern/OU=computers/CN=volhcb29.cern.ch
         # Define the Configuration Server as Master for your installations
         ConfigurationMaster = yes
+        
         #
-        #  The following options defined components to be installed
+        #  The following options define components to be installed
         #
         #  Name of the installation host (default: the current host )
         #  Used to build the URLs the services will publish
         # Host = dirac.cern.ch
         Host = 
-        #  List of DIRAC Systems to be installed
-        Systems = Configuration,Framework
         #  List of Services to be installed
         Services  = Configuration/Server
         Services += Framework/SystemAdministrator
@@ -183,7 +190,7 @@ be taken:
         {
           #  User name used to connect the DB server
           User = [default: Dirac]
-          #  Password for previous user. Must be set for SystemAdministrator Service to work
+          #  Password for database user acess. Must be set for SystemAdministrator Service to work
           Password = XXXX
           #  Password for root DB user. Must be set for SystemAdministrator Service to work
           RootPwd = YYYY
@@ -197,7 +204,8 @@ be taken:
          }
        }
 
-  - Run install_site.sh giving the edited CFG file as the argument::
+  - Run install_site.sh giving the edited configuration file as the argument. The configuration file must have
+    .cfg extension (CFG file)::
 
       ./install_site.sh install.cfg
       
@@ -211,7 +219,8 @@ be taken:
                             Web_paster : Run           5    30829
         
 Now the basic services - Configuration and SystemAdministrator - are installed. The rest of the installation can proceed using 
-the DIRAC Administrator interface, either command line (CLI) or using Web Portal (eventually, not available yet).
+the DIRAC Administrator interface, either command line (System Administrator Console) or using Web Portal (eventually, 
+not available yet).
 
 It is also possible to include any number of additional systems, services, agents and databases to be installed by "install_site.sh".
 
@@ -220,7 +229,7 @@ It is also possible to include any number of additional systems, services, agent
 Additional server installation
 ------------------------------------
 
-To add a new server to an already existing DIRAC Instalation the procedure is similar to the one above. 
+To add a new server to an already existing DIRAC Installation the procedure is similar to the one above. 
 You should perform all the preliminary steps to prepare the host for the installation. One additional 
 operation is the registration of the new host in the already functional Configuration Service.
 
@@ -236,7 +245,7 @@ operation is the registration of the new host in the already functional Configur
         #
         #  DIRAC release version (this is an example, you should find out the current 
         #  production release)
-        Release = v5r8
+        Release = v5r13
         #  To install the Server version of DIRAC (the default is client)
         InstallType = server
         #  LCG python bindings for SEs and LFC. Specify this option only if your installation
@@ -272,8 +281,6 @@ operation is the registration of the new host in the already functional Configur
         #  Service in your installation, for the primary server it should not used)
         ConfigurationServer = dips://myprimaryserver.name:9135/Configuration/Server
         ConfigurationServer += dips://localhost:9135/Configuration/Server
-        #  Flag to set up the Configuration Server as Master (use only in the primary server)
-        # ConfigurationMaster = yes
         #  Configuration Name
         ConfigurationName = MyConfiguration
 
@@ -282,17 +289,12 @@ operation is the registration of the new host in the already functional Configur
         #   The simplest option is to install a slave of the Configuration Server and a 
         #   SystemAdministrator for remote management.
         #
-        # Define the Configuration Server as Master for your installations
-        ConfigurationMaster = yes
-        #
         #  The following options defined components to be installed
         #
         #  Name of the installation host (default: the current host )
         #  Used to build the URLs the services will publish
         # Host = dirac.cern.ch
         Host = 
-        #  List of DIRAC Systems to be installed
-        Systems = Configuration,Framework
         #  List of Services to be installed
         Services  = Configuration/Server
         Services += Framework/SystemAdministrator
@@ -307,15 +309,15 @@ server. You can now set up the required components as described in :ref:`setting
 Post-Installation step
 ---------------------------
 
-In order to make the DIRAC components running we use the *runit* mechanism (http://smarden.org/runit/). For each component that need to 
-be running permanently (services and agents) there is one directory created under */opt/dirac/startup* that is 
+In order to make the DIRAC components running we use the *runit* mechanism (http://smarden.org/runit/). For each component that 
+must run permanently (services and agents) there is a directory created under */opt/dirac/startup* that is 
 monitored by a *runsvdir* daemon. The installation procedures above will properly start this daemon. In order 
-to make the start persistent between reboots you need to add some hook in your boot sequence. A possible solution
+to ensure starting the DIRAC components at boot you need to add a hook in your boot sequence. A possible solution
 is to add an entry in the */etc/initab*::
 
       SV:123456:respawn:/opt/dirac/sbin/runsvdir-start
 
-Together with a script like (it assumes that in your server DIRAC is using dirac local user to execute::
+Together with a script like (it assumes that in your server DIRAC is using *dirac* local user to run)::
 
       #!/bin/bash
       source /opt/dirac/bashrc
@@ -330,12 +332,12 @@ Together with a script like (it assumes that in your server DIRAC is using dirac
       RUNSVDIR=`which runsvdir`
       exec chpst -u dirac $RUNSVDIR -P /opt/dirac/startup 'log:  DIRAC runsv'
 
-The same script can be used restart all DIRAC components running on the machine.
+The same script can be used to restart all DIRAC components running on the machine.
 
 .. _setting_with_CLI:
 
-Setting up DIRAC services and agents using the SystemAdministrator CLI
-------------------------------------------------------------------------
+Setting up DIRAC services and agents using the System Administrator Console
+----------------------------------------------------------------------------
 
 To use the SystemAdministrator CLI, you will need first to install the DIRAC Client software on some machine.
 To install the DIRAC Client, follow the procedure described in the User Guide.
@@ -382,9 +384,12 @@ To install the DIRAC Client, follow the procedure described in the User Guide.
       install agent Configuration CE2CSAgent
 
 Note that all the necessary commands above can be collected in a text file and the whole installation can be 
-accomplished with a single CLI command:::
+accomplished with a single command:::
 
       execfile <command_file> 
+
+Component Configuration and Monitoring
+---------------------------------------- 
 
 At this point all the services should be running with their default configuration parameters. 
 To change the components configuration parameters
@@ -393,13 +398,8 @@ To change the components configuration parameters
 
       Systems -> Configuration -> Manage Configuration
 
-  - In the server all the logs of the services are stored and rotated in separate files and can be checked using the following command
+  - In the server all the logs of the services and agents are stored and rotated in 
+    files that can be checked using the following command::
 
-      tail -f  /opt/dirac/startup/<INSTANCE>_<Service or Agent>/log/current
+      tail -f  /opt/dirac/startup/<System>_<Service or Agent>/log/current
 
-(*) In order the find out the DN that needs to be included in the Configuration for a given host or users 
-certificate the following command can be used::
-
-  openssl x509 -noout -subject -enddate -in <certfile.pem>
-
-Last Updated by R. Graciani, March 28, 2011
