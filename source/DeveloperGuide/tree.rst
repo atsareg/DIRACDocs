@@ -8,7 +8,7 @@ The DIRAC Developer Guide is describing the procedures and rules for developing 
    :maxdepth: 2
 
    AddingNewComponents/tree
-   Utilities/index
+   Utilities/tree
    CodingConvention/index
    CodeDocumenting/index  
    ReleaseProcedure/index
