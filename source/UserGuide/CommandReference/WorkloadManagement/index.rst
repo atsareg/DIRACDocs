@@ -4,7 +4,7 @@ Workload Management
 ============================
 
 
-Before run those commands, please load the DIRAC environment, the steps are explained at: [http://mareela.in2p3.fr:9200/dirac/wiki/DiracEnvironmentUsers]
+Before running those commands, please load the DIRAC environment, the steps are explained at: [http://mareela.in2p3.fr:9200/dirac/wiki/DiracEnvironmentUsers]
 
 ----
 

@@ -1,9 +1,15 @@
 
 =====================
-DATA MANAGEMENT
+Data Management
 =====================
 
-Before run those commands, please load the DIRAC environment, the steps are explained at: [http://mareela.in2p3.fr:9200/dirac/wiki/DiracEnvironmentUsers]
+.. toctree::
+   :maxdepth: 2
+
+   dirac-dms-add-file.rst
+   dirac-dms-catalog-metadata.rst
+
+Before running those commands, please load the DIRAC environment, the steps are explained at: [http://mareela.in2p3.fr:9200/dirac/wiki/DiracEnvironmentUsers]
 
 ----
 
@@ -21,6 +27,7 @@ Example:  ::
    {'Failed': {},
     'Successful': {'/prod.vo.eu-eela.eu/user/h/hamar/UserEnv.csh': {'put': 25.789539813995361,
                                                                            'register': 8.6198098659515381}}}
+                                                                           
 ----
 
 Command  : **dirac-dms-lfc-metadata**
@@ -70,6 +77,7 @@ Options  : *dirac-dms-pfn-metadata.py <PFN> <SE>*
                                                                                                                                            'Migrated': 0,
                                                                                                                                            'Permissions': 436,
                                                                                                                                            'Size': 175L}                                                                                                                                      'Unavailable': 0}
+
 ----
 
 
@@ -262,6 +270,7 @@ Example  : ::
                                                                                                                                            'Permissions': 436,
                                                                                                                                            'Size': 175L,
                                                                                                                                            'Unavailable': 0}
+
 ----
 
 Command  : **dirac-dms-replica-metadata**

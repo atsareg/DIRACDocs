@@ -2,7 +2,7 @@
 Data Management Command Reference
 ====================================
 
-In this subsection all the data commands available are explained.
+In this subsection the Data Management commands are collected.
 
 .. toctree::
    :maxdepth: 2

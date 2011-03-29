@@ -1,6 +1,6 @@
-====================================
+======================================
 Workload Management Command Reference
-====================================
+======================================
 
 In this subsection all the Dirac workload management commands available are explained.
 

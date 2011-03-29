@@ -17,7 +17,6 @@ Web Portal Reference
    Overview/index
    PilotMonitor/index
    PilotSummary/index
-   PortalErrorConsole/index
    ProductionMonitor/index
    ProxyActionLogs/index
    RawIntegrity/index

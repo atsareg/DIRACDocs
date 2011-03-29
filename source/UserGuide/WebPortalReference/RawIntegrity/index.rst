@@ -112,7 +112,7 @@ Columns
 
   **Checksum**
 
-      **Value of the checksum file which is also calculated at the original write time at the Online storage. If the two checksums match the integrity of the Þle in CASTOR can be assumed.**
+      **Value of the checksum file which is also calculated at the original write time at the Online storage. If the two checksums match the integrity of the file in CASTOR can be assumed.**
 
   **PFN**
 

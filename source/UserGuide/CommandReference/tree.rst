@@ -1,11 +1,11 @@
 ==================================
-Commands
+Commands Reference
 ==================================
 
   This page is the work in progress. See more material here soon !
 
 .. toctree::
-   :maxdepth: 2
+   :maxdepth: 1
 
-   DataManagement/index
-   WorkloadManagement/index
+   DataManagement/tree
+   WorkloadManagement/tree
