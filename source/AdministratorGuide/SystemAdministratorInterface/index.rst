@@ -1,3 +1,5 @@
+.. _system-admin-console:
+
 ===================================
 System Administrator Console
 ===================================

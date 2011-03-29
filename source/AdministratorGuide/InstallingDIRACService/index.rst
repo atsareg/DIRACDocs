@@ -339,7 +339,7 @@ The same script can be used to restart all DIRAC components running on the machi
 Setting up DIRAC services and agents using the System Administrator Console
 ----------------------------------------------------------------------------
 
-To use the SystemAdministrator CLI, you will need first to install the DIRAC Client software on some machine.
+To use the :ref:`system-admin-console`, you will need first to install the DIRAC Client software on some machine.
 To install the DIRAC Client, follow the procedure described in the User Guide.
 
   - Start admin command line interface using administrator DIRAC group::
@@ -387,7 +387,7 @@ Note that all the necessary commands above can be collected in a text file and t
 accomplished with a single command:::
 
       execfile <command_file> 
-
+      
 Component Configuration and Monitoring
 ---------------------------------------- 
 
