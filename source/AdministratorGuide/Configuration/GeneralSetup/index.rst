@@ -1,3 +1,6 @@
+.. _dirac-general-cs:
+
 =====================================
-General DIRAC Configuration
+General DIRAC Configuration options
 =====================================
+
