@@ -27,7 +27,12 @@ Requirements
         default range if predefined ports are used, the port on which services are listening can be 
         configured by the DIRAC administrator);
       - For the server hosting the portal, ports 80 and 443 should be open and redirected to ports 
-        8080 and 8443 respectively, i.e. setting iptables appropriately; 
+        8080 and 8443 respectively, i.e. setting iptables appropriately::
+        
+         iptables -t nat -I PREROUTING -p tcp --dport 80 -j REDIRECT --to-ports 8080
+         iptables -t nat -I PREROUTING -p tcp --dport 443 -j REDIRECT --to-ports 8443
+        
+        
       - Grid host certificates in pem format;
       - At least one of the servers of the installation must have updated CAs and CRLs files;
       - If gLite third party services are needed (for example, for the pilot job submission via WMS 
