@@ -97,6 +97,7 @@ Just execute *dirac-distribution* with the appropiate flags. For instance::
  dirac-distribution -r v6r0 -l DIRAC 
  
 You can also pass the releases.cfg to use via command line using the *-C* switch. *dirac-distribution* will generate a set of tarballs, release and md5 files. Please copy those to your installation source so *dirac-install* can find them. 
+
 --------------------------------
 Installation
 --------------------------------
