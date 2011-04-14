@@ -98,6 +98,8 @@ Just execute *dirac-distribution* with the appropiate flags. For instance::
  
 You can also pass the releases.cfg to use via command line using the *-C* switch. *dirac-distribution* will generate a set of tarballs, release and md5 files. Please copy those to your installation source so *dirac-install* can find them. 
 
+When generating a distribution, if a file called ``releasenotes.rst`` is found, it will be "compiled" into html and pdf. The compiled files will be included in the tarball whereas the rst file will not.
+
 --------------------------------
 Installation
 --------------------------------
@@ -167,10 +169,17 @@ Reference of *default.cfg*  schema
 
  #Where to download the release tarballs and definitions
  InstallBaseURL = http://myhost/somepath/
+ #This project is just a link to the other one. Installing this one is the same
+ # as installing the defined one
+ LinkToProject = projectName
  
  #(Everything in here is optional) Default values for dirac-install
  Defaults
  {
+   #Install the requested project instead of this one
+   # Useful for setting defaults for VOs by defining them as projects and
+   # using this feature to install DIRAC instead of the VO name
+   Project = DIRAC
    #Release to install if not defined via command line
    Release = v1r4
    #Modules to install by default
