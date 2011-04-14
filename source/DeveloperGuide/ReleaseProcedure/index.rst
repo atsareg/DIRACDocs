@@ -145,7 +145,8 @@ Reference of *releases.cfg*  schema
    {
      #(Optional) Contains a comma separated list of modules for this release and their version in format
      # *extName(:extVersion)? (, extName(:extVersion)?)** . 
-     #If this option is not defined, modules defined in *DefaultExtensions* will be installed with the same version as the release.
+     #If this option is not defined, modules defined in *DefaultExtensions* will be installed 
+     # with the same version as the release.
      Modules = MyExt:v1r2p1, MyExtExtra:v1r1p1
      
      #(Optional) Comma separated list of projects on which this project depends in format 
@@ -161,9 +162,9 @@ Reference of *releases.cfg*  schema
    }
  }
  
------------------------------------
-Reference of *default.cfg*  schema
------------------------------------
+-----------------------------------------------
+Reference of a project's *default.cfg* schema
+-----------------------------------------------
 
 ::
 
@@ -199,7 +200,39 @@ Reference of *default.cfg*  schema
    #Enable debug logging
    Debug = False
  }
+ 
+ 
+------------------------------------
+Reference of global default's file
+------------------------------------
 
+Global defaults is the file that *dirac-install* will try to load to discover where the each project's ``defaults.cfg`` file is. The schema is as follows::
+
+ #Project name
+ ProjectName
+ {
+   #Location of the defaults.cfg file for this project
+   DefaultsLocation = http://somehost/somepath/defaultsProject.cfg
+   #Where to retrieve the release tarballs from
+   InstallBaseURL = http://somehost/someotherpath
+   #Skip loading the project's defaults.cfg
+   SkipDefaults = True
+   #This project is a link to another project
+   LinkToProject = OtherProject
+   #Default values for dirac-install
+   Defaults
+   {
+     #This section can contain the same as the Defaults section in each project's defaults.cfg
+   }
+ }
+ #And repeat for each project
+ OtherProject
+ {
+   ....
+ }
+
+
+All the values in the project's ``defaults.cfg`` file take precedence over the global ones. This file is useful for DIRAC maintainers to keep track of all the projects installable via native dirac-install.
 
 Common pitfalls
 ------------------
