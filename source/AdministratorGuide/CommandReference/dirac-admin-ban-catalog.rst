@@ -10,3 +10,7 @@ Usage::
 
  
 
+Example::
+
+  $ dirac-admin-ban-catalog LCG.IN2P3.fr
+

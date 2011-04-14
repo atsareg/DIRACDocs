@@ -24,3 +24,7 @@ Options::
 
   -G:  --UserGroup:      : Name of the Group for the User (Allow Multiple instances or None) 
 
+Example::
+
+  $ dirac-admin-add-user -N vhamar -D /O=GRID-FR/C=FR/O=CNRS/OU=CPPM/CN=Vanessa Hamar -M hamar@cppm.in2p3.fr -G dirac_user
+  $

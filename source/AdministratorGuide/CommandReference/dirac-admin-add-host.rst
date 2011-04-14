@@ -22,3 +22,6 @@ Options::
 
   -P:  --Property:       : Property to be added to the Host (Allow Multiple instances or None) 
 
+Example::
+
+  $ dirac-admin-add-host -H dirac.i2np3.fr -D /O=GRID-FR/C=FR/O=CNRS/OU=CC-IN2P3/CN=dirac.in2p3.fr

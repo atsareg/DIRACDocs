@@ -10,7 +10,7 @@ Usage::
 
 Arguments::
 
-  CE:       Name of the CE(ie: ce111.cern.ch) 
+  CE: Name of the CE(ie: ce111.cern.ch) 
 
  
 
@@ -20,3 +20,6 @@ Options::
 
   -V:  --vo=             : vo 
 
+Example::
+
+  $ dirac-admin-bdii-ce-voview LCG.IN2P3.fr

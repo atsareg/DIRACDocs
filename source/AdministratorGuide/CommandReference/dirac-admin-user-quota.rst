@@ -10,3 +10,14 @@ Usage::
 
  
 
+Example::
+
+  $ dirac-admin-user-quota
+  ------------------------------
+  Username       |     Quota (GB)
+  ------------------------------
+  atsareg        |           None
+  msapunov       |           None
+  vhamar         |           None
+  ------------------------------
+ 

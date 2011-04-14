@@ -22,3 +22,9 @@ Options::
 
   -P:  --Property:       : Property to be added to the Group (Allow Multiple instances or None) 
 
+Example::
+
+  $ dirac-admin-add-group -G dirac_test
+  $
+
+  

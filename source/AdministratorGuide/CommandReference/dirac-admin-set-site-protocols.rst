@@ -2,19 +2,17 @@
 dirac-admin-set-site-protocols
 =====================================
 
-  Defined protocols for each SE for a given site.
-
 Usage::
 
-  dirac-admin-set-site-protocols [option|cfgfile] ... Protocol ...
-
-Arguments::
-
-  Protocol: SE access protocol (mandatory) 
+  dirac-admin-set-site-protocols.py (<options>|<cfgFile>)* 
 
  
 
 Options::
 
-  -    --Site=           : Site for which protocols are to be set (mandatory) 
+  -    --Site=           : Site for which protocols are to be set (protocols are standard arguments) 
+
+Example::
+
+  $ dirac-admin-set-site-protocols
 

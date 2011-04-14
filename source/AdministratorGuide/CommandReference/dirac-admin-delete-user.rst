@@ -2,13 +2,11 @@
 dirac-admin-delete-user
 ==============================
 
-  Remove User from Configuration
-
 Usage::
 
-  dirac-admin-delete-user [option|cfgfile] ... User ...
+  dirac-admin-delete-user.py (<options>|<cfgFile>)* 
 
-Arguments::
+Example::
 
-  User:     User name 
+  $ dirac-admin-delete-user vhamar
 

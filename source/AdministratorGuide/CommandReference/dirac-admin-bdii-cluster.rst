@@ -10,11 +10,15 @@ Usage::
 
 Arguments::
 
-  CE:       Name of the CE(ie: ce111.cern.ch) 
+  CE: Name of the CE(ie: ce111.cern.ch) 
 
  
 
 Options::
 
   -H:  --host=           : BDII host 
+
+Example::
+
+  $ dirac-admin-bdii-cluster LCG.IN2P3.fr
 

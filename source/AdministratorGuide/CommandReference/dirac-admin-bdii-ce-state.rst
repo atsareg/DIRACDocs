@@ -10,7 +10,7 @@ Usage::
 
 Arguments::
 
-  CE:       Name of the CE(ie: ce111.cern.ch) 
+  CE: Name of the CE(ie: ce111.cern.ch) 
 
  
 

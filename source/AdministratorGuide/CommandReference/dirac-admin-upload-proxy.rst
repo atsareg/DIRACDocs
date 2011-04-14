@@ -2,13 +2,11 @@
 dirac-admin-upload-proxy
 ===============================
 
-  Upload a proxy to the Proxy Manager using delegation
-
 Usage::
 
-  dirac-admin-upload-proxy [option|cfgfile] ... Group
+  dirac-admin-upload-proxy.py (<options>|<cfgFile>)* 
 
-Arguments::
+Example::
 
-  Group:    Group name in the uploaded proxy 
-
+  $ dirac-admin-upload-proxy  dirac_test
+ 

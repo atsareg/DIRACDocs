@@ -10,7 +10,7 @@ Usage::
 
 Arguments::
 
-  Site:     Name of the Site (ie: CERN-PROD) 
+  Site: Name of the Site (ie: CERN-PROD) 
 
  
 
@@ -20,3 +20,6 @@ Options::
 
   -V:  --vo=             : vo 
 
+Example::
+
+  $ dirac-admin-bdii-sa CERN-PROD 

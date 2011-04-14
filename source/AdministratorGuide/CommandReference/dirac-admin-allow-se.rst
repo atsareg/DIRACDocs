@@ -20,3 +20,7 @@ Options::
 
   -S:  --Site=           :         Allow all SEs associated to site 
 
+Example::
+
+  $ dirac-admin-allow-se M3PEC-disk
+  $

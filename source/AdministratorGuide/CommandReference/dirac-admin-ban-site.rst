@@ -18,5 +18,9 @@ Arguments::
 
 Options::
 
-  -E:  --email=          : Boolean True/False (True by default) 
+  -    --email=          : Boolean True/False (True by default) 
+
+Example::
+
+  $ dirac-admin-ban-site LCG.IN2P3.fr 'Pilot installation problems'
 

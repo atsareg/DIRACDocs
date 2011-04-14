@@ -20,3 +20,6 @@ Options::
 
   -S:  --Site=           :       Ban all SEs associate to site 
 
+Example::
+
+  $ dirac-admin-ban-se M3PEC-disk

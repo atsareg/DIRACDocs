@@ -10,7 +10,7 @@ Usage::
 
 Arguments::
 
-  Site:     Name of the Site (ie: CERN-PROD) 
+  Site: Name of the Site (ie: CERN-PROD) 
 
  
 
@@ -18,3 +18,6 @@ Options::
 
   -H:  --host=           : BDII host 
 
+Example::
+
+  $ dirac-admin-bdii-site CERN-PROD
