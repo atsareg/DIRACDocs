@@ -10,4 +10,7 @@ Administrator Guide
    SystemAdministratorInterface/index
    Configuration/tree
    Systems/tree
+   DIRACSites/tree
    CommandReference/tree
+   
+   
