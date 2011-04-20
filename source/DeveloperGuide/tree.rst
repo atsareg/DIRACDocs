@@ -7,6 +7,7 @@ The DIRAC Developer Guide is describing the procedures and rules for developing 
 .. toctree::
    :maxdepth: 2
 
+   SettingUpADevelopmentEnvironment/index   
    AddingNewComponents/tree
    Utilities/tree
    CodingConvention/index
