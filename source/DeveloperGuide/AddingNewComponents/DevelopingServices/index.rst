@@ -85,7 +85,7 @@ be obtained using the "getRemoteCredentials()" method of the base RequestHandler
 The other useful method is getCSOption() which allows to extract options from the Service
 section in the Configuration Service.
 
-For each service interface method it is necessary to define _types_<method_name>_ class 
+For each service interface method it is necessary to define *types_<method_name>* class 
 variable of the List type. Each element of the List is one or a list of possible types 
 of the method arguments in the same order as defined in the method definition. The types 
 are imported from the ''types'' standard python module.             
